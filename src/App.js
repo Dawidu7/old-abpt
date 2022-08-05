@@ -12,7 +12,7 @@ import Planner from './planner/Planner'
 
 export default function App() {
   const location = useLocation()
-  const isHomePage = location.pathname.split('/')[1] === 'astrophotography-by-patryk-tomalik' || location.pathname.split('/')[1] === 'imgs'
+  const isHomePage = location.pathname.split('/')[2] === '' || location.pathname.split('/')[2] === 'imgs'
 
   document.querySelector('html').style.marginBottom = isHomePage ? '72px' : '0'
 
@@ -24,9 +24,9 @@ export default function App() {
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav' className='justify-content-end'>
           <Nav>
-            <Nav.Link as={Link} to='/calculator'>Calculator</Nav.Link>
-            <Nav.Link as={Link} to='/generator'>Generator</Nav.Link>
-            <Nav.Link as={Link} to='/planner'>Planner</Nav.Link>
+            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//calculator'>Calculator</Nav.Link>
+            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//generator'>Generator</Nav.Link>
+            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//planner'>Planner</Nav.Link>
             <Nav.Link as={Link} to='/' disabled>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -42,9 +42,9 @@ export default function App() {
     <Routes>
       <Route path='astrophotography-by-patryk-tomalik' element={<Home />} />
       <Route path='astrophotography-by-patryk-tomalik/imgs/:imgId' element={<Img />} />
-      <Route path='calculator' element={<Calculator />} />
-      <Route path='generator' element={<Generator />} />
-      <Route path='planner' element={<Planner />} />
+      <Route path='astrophotography-by-patryk-tomalik/calculator' element={<Calculator />} />
+      <Route path='astrophotography-by-patryk-tomalik/generator' element={<Generator />} />
+      <Route path='astrophotography-by-patryk-tomalik/planner' element={<Planner />} />
     </Routes>
     </>
   )
