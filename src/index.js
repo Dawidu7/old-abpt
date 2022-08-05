@@ -7,7 +7,7 @@ import './static/css/borders.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <Router basename='/astrophotography-by-patryk-tomalik'>
+  <Router>
     <App />
   </Router>
 )

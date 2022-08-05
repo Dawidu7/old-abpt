@@ -12,7 +12,7 @@ import Planner from './planner/Planner'
 
 export default function App() {
   const location = useLocation()
-  const isHomePage = location.pathname.split('/')[2] === '' || location.pathname.split('/')[2] === 'imgs' || !location.pathname.split('/')[2]
+  const isHomePage = location.pathname.split('/')[1] === 'astrophotography-by-patryk-tomalik'
 
   document.querySelector('html').style.marginBottom = isHomePage ? '72px' : '0'
 
@@ -20,13 +20,13 @@ export default function App() {
     <>
     <Navbar bg='dark' variant='dark' expand='md'>
       <Container fluid>
-        {!isHomePage && <Navbar.Brand as={Link} to='/' className='w-75'><Image src={logo} alt="" fluid='true' /></Navbar.Brand>} 
+        {!isHomePage && <Navbar.Brand as={Link} to='astrophotography-by-patryk-tomalik' className='w-75'><Image src={logo} alt="" fluid='true' /></Navbar.Brand>} 
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav' className='justify-content-end'>
           <Nav>
-            <Nav.Link as={Link} to='/calculator'>Calculator</Nav.Link>
-            <Nav.Link as={Link} to='/generator'>Generator</Nav.Link>
-            <Nav.Link as={Link} to='/planner'>Planner</Nav.Link>
+            <Nav.Link as={Link} to='calculator'>Calculator</Nav.Link>
+            <Nav.Link as={Link} to='generator'>Generator</Nav.Link>
+            <Nav.Link as={Link} to='planner'>Planner</Nav.Link>
             <Nav.Link as={Link} to='/' disabled>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
@@ -34,14 +34,14 @@ export default function App() {
     </Navbar>
     {isHomePage && <Navbar bg='dark' variant='dark' fixed='bottom'>
       <Container fluid>
-        <Navbar.Brand as={Link} to='/' className='mx-auto'>
+        <Navbar.Brand as={Link} to='astrophotography-by-patryk-tomalik' className='mx-auto'>
           <Image src={logo} alt="" fluid='true' />
         </Navbar.Brand>
       </Container>
     </Navbar>}
     <Routes>
-      <Route path='' element={<Home />} />
-      <Route path='/imgs/:imgId' element={<Img />} />
+      <Route path='/astrophotography-by-patryk-tomalik' element={<Home />} />
+      <Route path='/astrophotography-by-patryk-tomalik/imgs/:imgId' element={<Img />} />
       <Route path='/calculator' element={<Calculator />} />
       <Route path='/generator' element={<Generator />} />
       <Route path='/planner' element={<Planner />} />
