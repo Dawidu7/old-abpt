@@ -24,9 +24,9 @@ export default function App() {
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav' className='justify-content-end'>
           <Nav>
-            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//calculator'>Calculator</Nav.Link>
-            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//generator'>Generator</Nav.Link>
-            <Nav.Link as={Link} to='astrophotography-by-patryk-tomalik//planner'>Planner</Nav.Link>
+            <Nav.Link as={Link} to='calculator'>Calculator</Nav.Link>
+            <Nav.Link as={Link} to='generator'>Generator</Nav.Link>
+            <Nav.Link as={Link} to='planner'>Planner</Nav.Link>
             <Nav.Link as={Link} to='/' disabled>Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>
