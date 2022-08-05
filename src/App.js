@@ -41,7 +41,7 @@ export default function App() {
     </Navbar>}
     <Routes>
       <Route path='astrophotography-by-patryk-tomalik' element={<Home />} />
-      <Route path='imgs/:imgId' element={<Img />} />
+      <Route path='astrophotography-by-patryk-tomalik/imgs/:imgId' element={<Img />} />
       <Route path='calculator' element={<Calculator />} />
       <Route path='generator' element={<Generator />} />
       <Route path='planner' element={<Planner />} />
