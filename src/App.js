@@ -12,7 +12,7 @@ import Planner from './planner/Planner'
 
 export default function App() {
   const location = useLocation()
-  const isHomePage = location.pathname.split('/')[1] === '' || location.pathname.split('/')[1] === 'imgs'
+  const isHomePage = location.pathname.split('/')[1] === 'astrophotography-by-patryk-tomalik' || location.pathname.split('/')[1] === 'imgs'
 
   document.querySelector('html').style.marginBottom = isHomePage ? '72px' : '0'
 
@@ -20,7 +20,7 @@ export default function App() {
     <>
     <Navbar bg='dark' variant='dark' expand='md'>
       <Container fluid>
-        {!isHomePage && <Navbar.Brand as={Link} to='/' className='w-75'><Image src={logo} alt="" fluid='true' /></Navbar.Brand>} 
+        {!isHomePage && <Navbar.Brand as={Link} to='/astrophotography-by-patryk-tomalik' className='w-75'><Image src={logo} alt="" fluid='true' /></Navbar.Brand>} 
         <Navbar.Toggle aria-controls='navbar-nav' />
         <Navbar.Collapse id='navbar-nav' className='justify-content-end'>
           <Nav>
@@ -34,13 +34,13 @@ export default function App() {
     </Navbar>
     {isHomePage && <Navbar bg='dark' variant='dark' fixed='bottom'>
       <Container fluid>
-        <Navbar.Brand as={Link} to='/' className='mx-auto'>
+        <Navbar.Brand as={Link} to='/astrophotography-by-patryk-tomalik' className='mx-auto'>
           <Image src={logo} alt="" fluid='true' />
         </Navbar.Brand>
       </Container>
     </Navbar>}
     <Routes>
-      <Route path='' element={<Home />} />
+      <Route path='astrophotography-by-patryk-tomalik' element={<Home />} />
       <Route path='imgs/:imgId' element={<Img />} />
       <Route path='calculator' element={<Calculator />} />
       <Route path='generator' element={<Generator />} />
