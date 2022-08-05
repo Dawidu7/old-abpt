@@ -31,7 +31,7 @@ export default function Home() {
                     onMouseEnter={() => setImgHovered(i)}
                     onMouseLeave={() => setImgHovered()}
                 >
-                    <Link to={`astrophotography-by-patryk-tomalik/imgs/${img.id}`}>
+                    <Link to={`/imgs/${img.id}`}>
                         <motion.img 
                             data-flickr-embed="true"
                             src={img.img} 
