@@ -12,7 +12,7 @@ import Planner from './planner/Planner'
 
 export default function App() {
   const location = useLocation()
-  const isHomePage = location.pathname.split('/')[2] === '' || location.pathname.split('/')[2] === 'imgs'
+  const isHomePage = location.pathname.split('/')[2] === '' || location.pathname.split('/')[2] === 'imgs' || !location.pathname.split('/')[2]
 
   document.querySelector('html').style.marginBottom = isHomePage ? '72px' : '0'
 
@@ -42,9 +42,9 @@ export default function App() {
     <Routes>
       <Route path='astrophotography-by-patryk-tomalik' element={<Home />} />
       <Route path='astrophotography-by-patryk-tomalik/imgs/:imgId' element={<Img />} />
-      <Route path='astrophotography-by-patryk-tomalik/calculator' element={<Calculator />} />
-      <Route path='astrophotography-by-patryk-tomalik/generator' element={<Generator />} />
-      <Route path='astrophotography-by-patryk-tomalik/planner' element={<Planner />} />
+      <Route path='calculator' element={<Calculator />} />
+      <Route path='generator' element={<Generator />} />
+      <Route path='planner' element={<Planner />} />
     </Routes>
     </>
   )
