@@ -43,12 +43,12 @@ export default function Calculator() {
   useEffect(() => {setFlattReduc(flattReducs[selectedFlattReduc - 1])}, [selectedFlattReduc, flattReducs])
 
   useEffect(() => {setFocalRatio(telescope?.focal_ratio * flattReduc?.times)}, [telescope, flattReduc])
-  useEffect(() => {setResolution(Math.round(((camera?.pixel_size / telescope?.focal_length * 206.265) * flattReducs?.times) * 100) / 100)}, [camera, telescope])
+  useEffect(() => {setResolution(Math.round(((camera?.pixel_size / telescope?.focal_length * 206.265) * flattReduc?.times) * 100) / 100)}, [camera, telescope, flattReduc])
   useEffect(() => {
-    const fov_x = Math.round(((camera?.res_x * resolution / 3600) * flattReducs?.times) * 100) / 100
-    const fov_y = Math.round(((camera?.res_y * resolution / 3600) * flattReducs?.times) * 100) / 100
+    const fov_x = Math.round(((camera?.res_x * resolution / 3600) * flattReduc?.times) * 100) / 100
+    const fov_y = Math.round(((camera?.res_y * resolution / 3600) * flattReduc?.times) * 100) / 100
     setFOV((fov_x && fov_y) && `${fov_x}x${fov_y}`)
-  }, [camera, resolution])
+  }, [camera, resolution, flattReduc])
 
   return (
     <Container className='mt-3'>
