@@ -34,7 +34,7 @@ export default function Calculator() {
   const [telescope, setTelescope] = useState()
   const [flattReduc, setFlattReduc] = useState()
   const [focalRatio, setFocalRatio] = useState(0)
-  const [scale, setScale] = useState(0)
+  const [resolution, setResolution] = useState(0)
   const [fov, setFOV] = useState(0)
 
   // Set Info
@@ -43,12 +43,12 @@ export default function Calculator() {
   useEffect(() => {setFlattReduc(flattReducs[selectedFlattReduc - 1])}, [selectedFlattReduc, flattReducs])
 
   useEffect(() => {setFocalRatio(telescope?.focal_ratio * flattReduc?.times)}, [telescope, flattReduc])
-  useEffect(() => {setScale(Math.round((camera?.pixel_size / telescope?.focal_length * 206.265) * 100) / 100)}, [camera, telescope])
+  useEffect(() => {setResolution(Math.round(((camera?.pixel_size / telescope?.focal_length * 206.265) * flattReducs?.times) * 100) / 100)}, [camera, telescope])
   useEffect(() => {
-    const fov_x = Math.round((camera?.res_x * scale / 3600) * 100) / 100
-    const fov_y = Math.round((camera?.res_y * scale / 3600) * 100) / 100
+    const fov_x = Math.round(((camera?.res_x * resolution / 3600) * flattReducs?.times) * 100) / 100
+    const fov_y = Math.round(((camera?.res_y * resolution / 3600) * flattReducs?.times) * 100) / 100
     setFOV((fov_x && fov_y) && `${fov_x}x${fov_y}`)
-  }, [camera, scale])
+  }, [camera, resolution])
 
   return (
     <Container className='mt-3'>
@@ -80,7 +80,7 @@ export default function Calculator() {
             </Row>
             <Row className='mb-2'>
               <InputCol text={'Focal Length'} value={telescope?.focal_length || ''} />
-              <InputCol text={'Diameter'} value={telescope?.aperture || ''} />
+              <InputCol text={'Aperture'} value={telescope?.aperture || ''} />
               <InputCol text={'Focal Ratio'} value={telescope?.focal_ratio || ''} />
             </Row>
             <Row className='mb-2'>
@@ -90,7 +90,7 @@ export default function Calculator() {
           <div className='p-4'>
             <Row>
               <InputCol text={'Focal Ratio'} value={focalRatio || ''} />
-              <InputCol text={'Scale'} value={scale || ''} />
+              <InputCol text={'Resolution'} value={resolution || ''} />
               <InputCol text={'FOV'} value={fov || ''} />
             </Row>
           </div>
