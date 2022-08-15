@@ -65,7 +65,7 @@ export default function ModalForm({ show, row, setRow, dropdownItems, data, butt
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='primary' onClick={data ? buttonFunctions.submitEditRow : buttonFunctions.submitAddRow}>{data ? 'Update' : 'Add'}</Button>
+        <Button variant='secondary' onClick={data ? buttonFunctions.submitEditRow : buttonFunctions.submitAddRow}>{data ? 'Update' : 'Add'}</Button>
         <Button variant='danger' className='ms-1' onClick={buttonFunctions.cancel}>Cancel</Button>
       </Modal.Footer>
     </Modal>
