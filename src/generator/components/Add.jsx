@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 
+
 export default function Add({ add, type, dropdownItems }) {
   const [value, setValue] = useState('')
   const [selectedItem, setSelectedItem] = useState()
@@ -13,7 +14,7 @@ export default function Add({ add, type, dropdownItems }) {
 
   return (
     <InputGroup className='mb-2 p-1'>
-      {dropdownItems && <DropdownButton variant='light' title={selectedItem?.name}>
+      {(dropdownItems && selectedItem) && <DropdownButton variant='light' title={selectedItem?.name}>
         {dropdownItems.map(item => (
           <Dropdown.Item key={item.id} onClick={() => setSelectedItem(item)} value={item.value}>{item.name}</Dropdown.Item>
         ))}

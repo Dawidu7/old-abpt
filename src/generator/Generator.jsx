@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 import Add from './components/Add'
 import DS from './components/DS'
 import { saveAs } from 'file-saver'
@@ -27,8 +28,12 @@ export default function Generator() {
     return () => {window.removeEventListener('resize', resize)}
   }, [])
 
+  const [alert, setAlert] = useState(true)
+
   const add = (type, val, title) => {
-    Array.from(val.split(' ')).forEach(name => {
+    if(!val) return
+
+    Array.from(val.split(';')).forEach(name => {
       if(name.includes('-')) {
         const splitName = name.split('-')
         for(let i = parseInt(splitName[0]); i <= parseInt(splitName[1]); i++)
@@ -52,6 +57,9 @@ export default function Generator() {
 
   return (
     <Container fluid>
+      {alert && <Alert variant='dark' className='w-50 mx-auto mt-3 text-center' onClose={() => setAlert(false)} dismissible>
+        Seperate with ; to create multiple. Seperate with - to create consecutive.
+      </Alert>}
       <div className="d-md-flex justify-content-evenly mt-3">
         <div className="bg-dark p-3 h-25 rounded">
           <Add add={add} type='DS' dropdownItems={dropdownItems} />
