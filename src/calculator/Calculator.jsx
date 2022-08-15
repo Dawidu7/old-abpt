@@ -26,7 +26,7 @@ export default function Calculator() {
   const getData = async (api, func) => {
     fetch(`${process.env.REACT_APP_API}/calculator/get-${api}s`)
     .then(response => response.json())
-    .then(data => func(data))
+    .then(data => func([...data].sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? -1 : a.name.toLowerCase() > b.name.toLowerCase() ? 1 : 0)))
   }
 
   // Info
