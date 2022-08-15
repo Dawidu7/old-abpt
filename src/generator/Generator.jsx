@@ -38,9 +38,9 @@ export default function Generator() {
       if(name.includes('-')) {
         const splitName = name.split('-')
         for(let i = parseInt(splitName[0]); i <= parseInt(splitName[1]); i++)
-          setDSs(prevDSs => [...prevDSs, {id: type === 'Star' ? 3 : 4, name: `${title ?? ''}${i}`}])
+          setDSs(prevDSs => [...prevDSs, {id: type === 'DS' ? 4 : 3, name: `${title ?? ''}${i}`}])
       }
-      else setDSs(prevDSs => [...prevDSs, {id: type === 'Star' ? 3 : 4, name: `${title ?? ''}${name}`}])
+      else setDSs(prevDSs => [...prevDSs, {id: type === 'DS' ? 4 : 3, name: `${title ?? ''}${name}`}])
     })
   }
 
@@ -64,7 +64,7 @@ export default function Generator() {
       <div className="d-md-flex justify-content-evenly mt-3">
         <div className="bg-dark p-3 h-25 rounded">
           <Add add={add} type='DS' dropdownItems={dropdownItems} />
-          <Add add={add} type='Star' />
+          <Add add={add} type='Other' />
         </div>
         <div className={`bg-dark p-3 text-light rounded ${windowWidth < 768 && 'mt-3'}`}>
           <Button variant='outline-light' onClick={save}>Save</Button>
