@@ -36,7 +36,7 @@ export default function Planner() {
     const data = rows.map((row, i) => {return `${Object.values(row).join(';')}${i !== rows.length - 1 ? '\n' : ''}`})
     console.log(data)
     const blob = new Blob(data, {type: 'text/plain;charset=utf-8'})
-    saveAs(blob, 'planner.pat')
+    saveAs(blob, 'planner.xls')
   }
 
   const load = () => {

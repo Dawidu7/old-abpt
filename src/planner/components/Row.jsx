@@ -96,8 +96,8 @@ export default function Row({ dropdownItems, addRow, editRow, deleteRow, data })
   }
 
   return (
-    <ListGroup.Item variant='dark' className='d-flex justify-content-between align-items-center'>
-      {isAdd ? <Button variant='outline-dark' className='border-0 w-100' onClick={handleAddClick}>+</Button>
+    <ListGroup.Item className='d-flex justify-content-between align-items-center bg-dark text-light'>
+      {isAdd ? <Button variant='outline-dark' className='border-0 w-100 text-light' onClick={handleAddClick}>+</Button>
       : isEdit ?  
         windowWidthForm >= 1800 ?
         <RowForm {...attributes} /> : <ModalForm show={isEdit} {...attributes} /> 

@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
       fetch(`${process.env.REACT_APP_API}/home/get-imgs`)
       .then(response => response.json())
-      .then(data => setImgs([...data]))
+      .then(data => setImgs([...data].sort(() => Math.random() - .5)))
   }, [])
 
   return (
