@@ -57,7 +57,7 @@ export default function Generator() {
 
   return (
     <Container fluid>
-      {alert && <Alert variant='dark' className='w-50 mx-auto mt-3 text-center' onClose={() => setAlert(false)} dismissible>
+      {alert && <Alert variant='dark' className='mx-auto mt-3 text-center' onClose={() => setAlert(false)} dismissible>
         Seperate with ; to create multiple. Seperate with - to create consecutive.
       </Alert>}
       <div className="d-md-flex justify-content-evenly mt-3">
