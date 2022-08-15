@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/astrophotography-by-patryk-tomalik/static/css/main.ea10af91.css",
-    "main.js": "/astrophotography-by-patryk-tomalik/static/js/main.e006857c.js",
+    "main.js": "/astrophotography-by-patryk-tomalik/static/js/main.38cae516.js",
     "index.html": "/astrophotography-by-patryk-tomalik/index.html",
     "main.ea10af91.css.map": "/astrophotography-by-patryk-tomalik/static/css/main.ea10af91.css.map",
-    "main.e006857c.js.map": "/astrophotography-by-patryk-tomalik/static/js/main.e006857c.js.map"
+    "main.38cae516.js.map": "/astrophotography-by-patryk-tomalik/static/js/main.38cae516.js.map"
   },
   "entrypoints": [
     "static/css/main.ea10af91.css",
-    "static/js/main.e006857c.js"
+    "static/js/main.38cae516.js"
   ]
 }
