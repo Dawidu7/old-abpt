@@ -34,6 +34,7 @@ export default function Generator() {
     if(!val) return
 
     Array.from(val.split(';')).forEach(name => {
+      name = name.trim()
       if(name.includes('-')) {
         const splitName = name.split('-')
         for(let i = parseInt(splitName[0]); i <= parseInt(splitName[1]); i++)
@@ -58,12 +59,11 @@ export default function Generator() {
   return (
     <Container fluid>
       {alert && <Alert variant='dark' className='mx-auto mt-3 text-center' onClose={() => setAlert(false)} dismissible>
-        Seperate with ; to create multiple. Seperate with - to create consecutive.
+        Seperate with ; to create multiple (1; 5; 10 gives 1 5 10). Seperate with - to create consecutive (1-5 gives 1 2 3 4 5).
       </Alert>}
       <div className="d-md-flex justify-content-evenly mt-3">
         <div className="bg-dark p-3 h-25 rounded">
           <Add add={add} type='DS' dropdownItems={dropdownItems} />
-          <Add add={add} type='US' />
           <Add add={add} type='Star' />
         </div>
         <div className={`bg-dark p-3 text-light rounded ${windowWidth < 768 && 'mt-3'}`}>
