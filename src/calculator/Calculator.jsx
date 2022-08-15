@@ -46,6 +46,17 @@ export default function Calculator() {
   useEffect(() => {setResolution(Math.round(((camera?.pixel_size / telescope?.focal_length * 206.265) * flattReduc?.times) * 100) / 100)}, [camera, telescope, flattReduc])
   useEffect(() => {setFOV({x: Math.round((camera?.res_x * resolution / 3600) * 100) / 100, y: Math.round((camera?.res_y * resolution / 3600) * 100) / 100})}, [camera, resolution])
 
+  // Window Width
+  const [width, setWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const resize = () => (setWidth(window.innerWidth))
+
+    window.addEventListener('resize', resize)
+
+    return () => window.removeEventListener('resize', resize)
+  }, [])
+
   return (
     <Container className='mt-3'>
       <Row className='bg-dark rounded'>
@@ -70,16 +81,19 @@ export default function Calculator() {
         <Col>
           <div className="border-bottom p-4">
             <Row className='mb-2'>
+              {width < 768 && <Form.Label className='text-light'>Camera</Form.Label>}
               <InputCol text={'Resolution'} value={camera ? `${camera.res_x}x${camera.res_y}` : ''} />
               <InputCol text={'Matrix Size'} value={camera?.matrix_size || ''} />
               <InputCol text={'Pixel Size'} value={camera?.pixel_size || ''} />
             </Row>
             <Row className='mb-2'>
+              {width < 768 && <Form.Label className='text-light'>Telescope</Form.Label>}
               <InputCol text={'Focal Length'} value={telescope?.focal_length || ''} />
               <InputCol text={'Aperture'} value={telescope?.aperture || ''} />
               <InputCol text={'Focal Ratio'} value={telescope?.focal_ratio || ''} />
             </Row>
             <Row className='mb-2'>
+              {width < 768 && <Form.Label className='text-light'>Flatt/Reduc</Form.Label>}
               <InputCol text={'Times'} value={flattReduc?.times || ''} />
             </Row>
           </div>
