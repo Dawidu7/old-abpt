@@ -28,7 +28,7 @@ export default function RowForm({ row, setRow, dropdownItems, data, buttonFuncti
       <Select value={row.angle} setValue={setValue} name='angle' defaultValue={'Angle'} dropdownItems={dropdownItems.angles} />
       <InputGroup.Text>°</InputGroup.Text>
     </InputGroup>
-    <Button variant='primary' onClick={data ? buttonFunctions.submitEditRow : buttonFunctions.submitAddRow}>{data ? 'Update' : 'Add'}</Button>
+    <Button variant='secondary' onClick={data ? buttonFunctions.submitEditRow : buttonFunctions.submitAddRow}>{data ? 'Update' : 'Add'}</Button>
     <Button variant='danger' className='ms-2' onClick={buttonFunctions.cancel}>Cancel</Button>
     </>
   )

@@ -6,7 +6,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 
 export default function ModalForm({ show, row, setRow, dropdownItems, data, buttonFunctions }) {
-  const setValue = (e) => {setRow(prevRow => {console.log(prevRow, e.target.name, e.target.value); return {...prevRow, [e.target.name]:e.target.value}})} 
+  const setValue = (e) => {setRow(prevRow => ({...prevRow, [e.target.name]:e.target.value}))} 
 
   return (
     <Modal show={show} onHide={buttonFunctions.cancel} centered>

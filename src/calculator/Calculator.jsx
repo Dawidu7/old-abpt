@@ -35,20 +35,16 @@ export default function Calculator() {
   const [flattReduc, setFlattReduc] = useState()
   const [focalRatio, setFocalRatio] = useState(0)
   const [resolution, setResolution] = useState(0)
-  const [fov, setFOV] = useState(0)
+  const [fov, setFOV] = useState({x: 0, y: 0})
 
   // Set Info
   useEffect(() => {setCamera(cameras[selectedCamera - 1])}, [selectedCamera, cameras])
   useEffect(() => {setTelescope(telescopes[selectedTelescope - 1])}, [selectedTelescope, telescopes])
   useEffect(() => {setFlattReduc(flattReducs[selectedFlattReduc - 1])}, [selectedFlattReduc, flattReducs])
 
-  useEffect(() => {setFocalRatio(telescope?.focal_ratio * flattReduc?.times)}, [telescope, flattReduc])
+  useEffect(() => {setFocalRatio(Math.round((telescope?.focal_ratio * flattReduc?.times) * 100) / 100)}, [telescope, flattReduc])
   useEffect(() => {setResolution(Math.round(((camera?.pixel_size / telescope?.focal_length * 206.265) * flattReduc?.times) * 100) / 100)}, [camera, telescope, flattReduc])
-  useEffect(() => {
-    const fov_x = Math.round(((camera?.res_x * resolution / 3600) * flattReduc?.times) * 100) / 100
-    const fov_y = Math.round(((camera?.res_y * resolution / 3600) * flattReduc?.times) * 100) / 100
-    setFOV((fov_x && fov_y) && `${fov_x}x${fov_y}`)
-  }, [camera, resolution, flattReduc])
+  useEffect(() => {setFOV({x: Math.round((camera?.res_x * resolution / 3600) * 100) / 100, y: Math.round((camera?.res_y * resolution / 3600) * 100) / 100})}, [camera, resolution])
 
   return (
     <Container className='mt-3'>
@@ -91,7 +87,7 @@ export default function Calculator() {
             <Row>
               <InputCol text={'Focal Ratio'} value={focalRatio || ''} />
               <InputCol text={'Resolution'} value={resolution || ''} />
-              <InputCol text={'FOV'} value={fov || ''} />
+              <InputCol text={'FOV'} value={Object.values(fov).every(value => value) ? `${fov.x}x${fov.y}` : ''} />
             </Row>
           </div>
         </Col>

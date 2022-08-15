@@ -12,6 +12,8 @@ export default function Planner() {
   const [dropdownItems, setDropdownItems] = useState({catalogs: null, constellations: null, telescopes: null, cameras: null, filters: null, angles: null})
   const [rows, setRows] = useState([])
 
+  console.log(rows)
+
   useEffect(() => {
     Object.keys(dropdownItems).forEach(type => {
       fetch(`${process.env.REACT_APP_API}/planner/get-${type}`)
@@ -34,7 +36,6 @@ export default function Planner() {
 
   const save = () => {
     const data = rows.map((row, i) => {return `${Object.values(row).join(';')}${i !== rows.length - 1 ? '\n' : ''}`})
-    console.log(data)
     const blob = new Blob(data, {type: 'text/plain;charset=utf-8'})
     saveAs(blob, 'planner.xls')
   }
