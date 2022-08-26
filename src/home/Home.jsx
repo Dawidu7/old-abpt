@@ -34,7 +34,7 @@ export default function Home() {
                     <Link to={`/imgs/${img.id}`}>
                         <motion.img 
                             data-flickr-embed="true"
-                            src={img.img} 
+                            src={img.thumbnail} 
                             alt="" 
                             fluid='true' 
                             className='w-100 h-100' 
