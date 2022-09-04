@@ -10,6 +10,7 @@ export default function Img() {
   const { imgId } = useParams()
 
   const [img, setImg] = useState()
+  const [imgVisible, setImgVisible] = useState(false)
   const [annotationVisible, setAnnotationVisible] = useState(false)
 
   useEffect(() => {document.title = img?.name ?? 'Img'})
@@ -27,7 +28,9 @@ export default function Img() {
         <h1 className='mt-3'>{img?.name}</h1>
       </div>
       <hr className='text-dark mt-0' />
-      <Image src={img?.img} alt="" fluid='true' className='w-100 h-100' />
+      <button onClick={() => setImgVisible(true)} className='w-100 h-auto m-0 p-0 border-0'>
+        <Image src={img?.img} alt="" fluid='true' className='w-100 h-100' />
+      </button>
       <Row className="bg-dark p-2 my-3 w-100 mx-auto">
         <Col sm='6' className='border-sm-end border-sm-bottom-0 border-bottom border-light p-2'>
           <h4>TECH SPEC:</h4>
@@ -54,7 +57,12 @@ export default function Img() {
         </Col>
       </Row>
     </Container>
-    <Modal centered size='xl' show={annotationVisible} onHide={() => {setAnnotationVisible(false)}}>
+    <Modal centered show={imgVisible} onHide={() => {setImgVisible(false)}}>
+      <Modal.Body className='p-0'>
+        <Image src={img?.img} alt="" fluid='true' className='w-100' />
+      </Modal.Body>
+    </Modal>
+    <Modal centered show={annotationVisible} onHide={() => {setAnnotationVisible(false)}}>
       <Modal.Body className='p-0'>
         <Image src={img?.annotation} alt="" fluid='true' className='w-100' />
       </Modal.Body>
